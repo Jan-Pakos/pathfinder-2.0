@@ -1,5 +1,8 @@
 package domain.citycrud;
 
+import com.example.pathfinder.citycrud.Node;
+import com.example.pathfinder.citycrud.NodeAndConnectionRepository;
+
 import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicLong;
@@ -31,8 +34,8 @@ class NodeAndConnectionInMemoryRepository implements NodeAndConnectionRepository
     }
 
     @Override
-    public Optional<Node> findById(Long aLong) {
-        return Optional.empty();
+    public Optional<Node> findById(Long id) {
+        return Optional.ofNullable(db.get(id));
     }
 
     @Override
@@ -78,5 +81,10 @@ class NodeAndConnectionInMemoryRepository implements NodeAndConnectionRepository
     @Override
     public void deleteAll() {
 
+    }
+
+    @Override
+    public void removeById(Long id) {
+        db.remove(id);
     }
 }
