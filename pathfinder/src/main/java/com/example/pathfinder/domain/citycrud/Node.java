@@ -28,12 +28,4 @@ public class Node {
     @OneToMany(mappedBy = "toNode", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Connection> incomingConnections = new HashSet<>();
 
-    public void addConnection(Node destination, Double distance) {
-        Connection connection = new Connection();
-        connection.setFromNode(this);
-        connection.setToNode(destination);
-        connection.setDistance(distance);
-        this.outgoingConnections.add(connection);
-    }
-
 }
