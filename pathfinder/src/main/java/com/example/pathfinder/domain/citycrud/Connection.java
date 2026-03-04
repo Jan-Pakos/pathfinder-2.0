@@ -1,20 +1,19 @@
 package com.example.pathfinder.domain.citycrud;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 @Entity
 @Getter
 @Setter
 @Builder
 @AllArgsConstructor
+@NoArgsConstructor
+@Table(name = "connections")
 class Connection {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
@@ -26,10 +25,6 @@ class Connection {
     private Node toNode;
 
     @Column(nullable = false)
-    private Double distance;
+    private Double duration;
 
-
-    public Connection() {
-
-    }
 }
