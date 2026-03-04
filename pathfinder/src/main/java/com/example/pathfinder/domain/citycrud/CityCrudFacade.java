@@ -18,7 +18,7 @@ public class CityCrudFacade {
         nodeService.remove(id);
     }
 
-    public void updateNodeName(Long id, String s) {
-
+    public Node updateNodeName(Long id, String s) {
+        return nodeService.updateNodeName(id, s);
     }
 }

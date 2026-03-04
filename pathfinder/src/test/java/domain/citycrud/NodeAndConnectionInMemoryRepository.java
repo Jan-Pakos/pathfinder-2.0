@@ -1,7 +1,8 @@
 package domain.citycrud;
 
-import com.example.pathfinder.citycrud.Node;
-import com.example.pathfinder.citycrud.NodeAndConnectionRepository;
+
+import com.example.pathfinder.domain.citycrud.Node;
+import com.example.pathfinder.domain.citycrud.NodeAndConnectionRepository;
 
 import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;

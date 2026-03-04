@@ -1,9 +1,9 @@
 package domain.citycrud;
 
-import com.example.pathfinder.citycrud.CityCrudFacade;
-import com.example.pathfinder.citycrud.Node;
-import com.example.pathfinder.citycrud.NodeAndConnectionRepository;
-import com.example.pathfinder.citycrud.NodeService;
+import com.example.pathfinder.domain.citycrud.CityCrudFacade;
+import com.example.pathfinder.domain.citycrud.NodeAndConnectionRepository;
+import com.example.pathfinder.domain.citycrud.NodeService;
+import com.example.pathfinder.domain.citycrud.Node;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -54,9 +54,10 @@ class CityCrudFacadeTest {
 
         Node node = facade.addNode(warsaw);
         // when
-        facade.updateNodeName(node.getId(), "Warsaw 2.0");
+        String newName = "Warsaw 2.0";
+        Node updatedNode = facade.updateNodeName(node.getId(), newName);
         // then
-        assertThat(node.getName()).isEqualTo("Warsaw 2.0");
+        assertThat(updatedNode.getName()).isEqualTo(newName);
     }
 
 
