@@ -25,7 +25,7 @@ public class CityCrudFacade {
         return nodeService.updateNodeName(id, s);
     }
 
-    public Connection addConnection(Long fromNodeId, Long toNodeId, Long duration) {
+    public Connection addConnection(Long fromNodeId, Long toNodeId, Long duration, TransportType transportType) {
 
         Node fromNode = nodeService.findById(fromNodeId);
         Node toNode = nodeService.findById(toNodeId);
@@ -34,6 +34,7 @@ public class CityCrudFacade {
                 .fromNode(fromNode)
                 .toNode(toNode)
                 .duration(duration)
+                .transportType(transportType)
                 .build();
         return connectionService.save(connectionToAdd);
     }

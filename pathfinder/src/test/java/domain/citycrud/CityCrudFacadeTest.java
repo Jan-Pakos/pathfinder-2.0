@@ -74,7 +74,7 @@ class CityCrudFacadeTest {
         Node addedWarsawNode = facade.addNode(warsaw);
         Node addedStockholmNode = facade.addNode(stockholm);
         // when
-        Connection addedConnection = facade.addConnection(addedWarsawNode.getId(), addedStockholmNode.getId(), 100L);
+        Connection addedConnection = facade.addConnection(addedWarsawNode.getId(), addedStockholmNode.getId(), 100L, TransportType.TRAIN);
         // then
         assertThat(addedConnection.getFromNode().getId()).isEqualTo(addedWarsawNode.getId());
         assertThat(addedConnection.getToNode().getId()).isEqualTo(addedStockholmNode.getId());
@@ -96,10 +96,10 @@ class CityCrudFacadeTest {
         Node addedWarsawNode = facade.addNode(warsaw);
         Node addedStockholmNode = facade.addNode(stockholm);
 
-        Connection addedConnection = facade.addConnection(addedWarsawNode.getId(), addedStockholmNode.getId(), 100L);
+        Connection addedConnection = facade.addConnection(addedWarsawNode.getId(), addedStockholmNode.getId(), 100L, TransportType.TRAIN);
         // when
 
-        facade.addConnection(addedWarsawNode.getId(), addedStockholmNode.getId(), 100L);
+        Throwable exception = facade.addConnection(addedWarsawNode.getId(), addedStockholmNode.getId(), 100L, TransportType.TRAIN);
         // then
         assertThat(updatedNode.getName()).isEqualTo(newName);
     }
