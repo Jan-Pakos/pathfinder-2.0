@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 @Entity
@@ -27,5 +28,17 @@ public class Node {
 
     @OneToMany(mappedBy = "toNode", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Connection> incomingConnections = new HashSet<>();
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Connection other)) return false;
+        return id != null && Objects.equals(id, other.getId());
+    }
+
+    @Override
+    public int hashCode() {
+        return getClass().hashCode();
+    }
 
 }

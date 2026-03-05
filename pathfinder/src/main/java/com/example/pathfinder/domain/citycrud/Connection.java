@@ -3,6 +3,8 @@ package com.example.pathfinder.domain.citycrud;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.Objects;
+
 @Entity
 @Getter
 @Setter
@@ -32,5 +34,17 @@ public class Connection {
     @Enumerated(EnumType.STRING)
     @Column(name = "transport_type", nullable = false)
     private TransportType transportType;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Connection other)) return false;
+        return id != null && Objects.equals(id, other.getId());
+    }
+
+    @Override
+    public int hashCode() {
+        return getClass().hashCode();
+    }
 
 }
