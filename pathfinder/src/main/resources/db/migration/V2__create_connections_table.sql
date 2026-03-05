@@ -3,12 +3,12 @@ CREATE TABLE connections (
                              from_node_id BIGINT NOT NULL,
                              to_node_id BIGINT NOT NULL,
                              duration DOUBLE PRECISION NOT NULL,
-
+                             transport_type VARCHAR(50) NOT NULL,
 
                              CONSTRAINT fk_connection_from_node FOREIGN KEY (from_node_id) REFERENCES nodes(id),
-                             CONSTRAINT fk_connection_to_node FOREIGN KEY (to_node_id) REFERENCES nodes(id)
+                             CONSTRAINT fk_connection_to_node FOREIGN KEY (to_node_id) REFERENCES nodes(id),
+                             CONSTRAINT uk_connection_route UNIQUE (from_node_id, to_node_id, transport_type, duration)
 );
-
 
 CREATE INDEX idx_connection_from_node_id ON connections(from_node_id);
 CREATE INDEX idx_connection_to_node_id ON connections(to_node_id);
