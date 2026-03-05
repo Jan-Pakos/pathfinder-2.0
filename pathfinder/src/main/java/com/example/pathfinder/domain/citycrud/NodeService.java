@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 @AllArgsConstructor
 public class NodeService {
 
-    NodeAndConnectionRepository repository;
+    NodeRepository repository;
 
     public Node save(Node node) {
         return repository.save(node);
@@ -21,5 +21,9 @@ public class NodeService {
         Node node = repository.findById(id).orElseThrow(() -> new IllegalArgumentException("Node not found"));
         node.setName(s);
         return repository.save(node);
+    }
+
+    public Node findById(Long fromNodeId) {
+        return repository.findById(fromNodeId).orElseThrow(() -> new IllegalArgumentException("Node not found"));
     }
 }
