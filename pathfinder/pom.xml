@@ -72,6 +72,16 @@
             <version>7.2.6.Final</version>
         </dependency>
 
+        <!-- FLYWAY DB MIGRATION -->
+        <dependency>
+            <groupId>org.flywaydb</groupId>
+            <artifactId>flyway-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.flywaydb</groupId>
+            <artifactId>flyway-database-postgresql</artifactId>
+        </dependency>
+
     </dependencies>
 
 	<build>

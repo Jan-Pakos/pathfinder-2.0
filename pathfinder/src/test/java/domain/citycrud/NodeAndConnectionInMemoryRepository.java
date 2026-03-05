@@ -2,13 +2,13 @@ package domain.citycrud;
 
 
 import com.example.pathfinder.domain.citycrud.Node;
-import com.example.pathfinder.domain.citycrud.NodeAndConnectionRepository;
+import com.example.pathfinder.domain.citycrud.NodeRepository;
 
 import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicLong;
 
-class NodeAndConnectionInMemoryRepository implements NodeAndConnectionRepository {
+class NodeAndConnectionInMemoryRepository implements NodeRepository {
 
     private final ConcurrentHashMap<Long, Node> db;
     private final AtomicLong counter;

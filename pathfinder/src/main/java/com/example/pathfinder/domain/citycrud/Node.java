@@ -12,10 +12,11 @@ import java.util.Set;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-class Node {
+@Table(name = "nodes")
+public class Node {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(nullable = false)
@@ -26,13 +27,5 @@ class Node {
 
     @OneToMany(mappedBy = "toNode", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Connection> incomingConnections = new HashSet<>();
-
-    public void addConnection(Node destination, Double distance) {
-        Connection connection = new Connection();
-        connection.setFromNode(this);
-        connection.setToNode(destination);
-        connection.setDistance(distance);
-        this.outgoingConnections.add(connection);
-    }
 
 }
