@@ -9,8 +9,10 @@ import lombok.*;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "connections")
-class Connection {
+@Table(name = "connections", uniqueConstraints = {
+        @UniqueConstraint(name = "uk_connection_route", columnNames = {"from_node_id", "to_node_id", "transport_type", "duration"})
+})
+public class Connection {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,6 +27,10 @@ class Connection {
     private Node toNode;
 
     @Column(nullable = false)
-    private Double duration;
+    private Long duration;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "transport_type", nullable = false)
+    private TransportType transportType;
 
 }
