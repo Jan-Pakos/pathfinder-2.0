@@ -20,7 +20,7 @@ public class Node {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
+    @Column( unique = true, nullable = false)
     private String name;
 
     @OneToMany(mappedBy = "fromNode", cascade = CascadeType.ALL, orphanRemoval = true)
@@ -32,13 +32,14 @@ public class Node {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Connection other)) return false;
-        return id != null && Objects.equals(id, other.getId());
+        if (!(o instanceof Node other)) return false;
+        return Objects.equals(name, other.getName());
     }
 
     @Override
     public int hashCode() {
-        return getClass().hashCode();
+        return Objects.hash(name);
     }
+
 
 }
